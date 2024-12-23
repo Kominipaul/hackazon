@@ -25,16 +25,40 @@ class Amfphp_BackOffice_ClientGenerator_Util {
      * @param string $dst must not exist yet
      */
     public static function recurseCopy($src, $dst) {
-        $dir = opendir($src);
-        if(!file_exists($dst)){
-            mkdir($dst);
+        $trustedRoot = '/path/to/trusted/directory/';
+    
+        // Ensure the root directory has a trailing slash
+        if (!str_ends_with($trustedRoot, '/')) {
+            $trustedRoot .= '/';
         }
-        while (false !== ( $file = readdir($dir))) {
-            if (( $file != '.' ) && ( $file != '..' )) {
-                if (is_dir($src . '/' . $file)) {
-                    self::recurseCopy($src . '/' . $file, $dst . '/' . $file);
+    
+        //validate source path
+        $realSrc = realpath($src);
+        if ($realSrc === false || strpos($realSrc, $trustedRoot) !== 0) {
+            throw new Exception("Invalid source path.");
+        }
+    
+        // validate destination path
+        $realDst = realpath($dst) ?: $dst; // Destination may not exist yet
+        if (strpos(realpath(dirname($realDst)) ?: $realDst, $trustedRoot) !== 0) {
+            throw new Exception("Invalid destination path.");
+        }
+    
+        //copy
+        $dir = opendir($realSrc);
+        if (!file_exists($realDst)) {
+            mkdir($realDst);
+        }
+    
+        while (false !== ($file = readdir($dir))) {
+            if ($file != '.' && $file != '..') {
+                $srcFile = $realSrc . DIRECTORY_SEPARATOR . $file;
+                $dstFile = $realDst . DIRECTORY_SEPARATOR . $file;
+    
+                if (is_dir($srcFile)) {
+                    self::recurseCopy($srcFile, $dstFile);
                 } else {
-                    copy($src . '/' . $file, $dst . '/' . $file);
+                    copy($srcFile, $dstFile);
                 }
             }
         }

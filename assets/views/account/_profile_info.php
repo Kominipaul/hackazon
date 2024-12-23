@@ -2,33 +2,33 @@
 <div class="row">
 	<div class="col-xs-8">
 		<table class="table profile-table table-striped">
-		<thead>
-			<tr>
-				<td>
-				</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Username:</td>
-				<td><?php $_($userData['username']); ?></td>
-			</tr>
-			<tr>
-				<td>E-mail:</td>
-				<td><?php $_($userData['email']); ?></td>
-			</tr>
-			<tr>
-				<td>First Name:</td>
-				<td><?php $_($userData['first_name']); ?></td>
-			</tr>
-			<tr>
-				<td>Last Name:</td>
-				<td><?php $_($userData['last_name']); ?></td>
-			</tr>
-			<tr>
-				<td>Phone:</td>
-				<td><?php $_($userData['user_phone']); ?></td>
-			</tr>
+			<thead>
+				<tr>
+					<th>Field</th> 
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Username:</td>
+					<td><?php $_($userData['username']); ?></td>
+				</tr>
+				<tr>
+					<td>E-mail:</td>
+					<td><?php $_($userData['email']); ?></td>
+				</tr>
+				<tr>
+					<td>First Name:</td>
+					<td><?php $_($userData['first_name']); ?></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td>
+					<td><?php $_($userData['last_name']); ?></td>
+				</tr>
+				<tr>
+					<td>Phone:</td>
+					<td><?php $_($userData['user_phone']); ?></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

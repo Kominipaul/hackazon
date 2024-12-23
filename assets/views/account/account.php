@@ -12,34 +12,34 @@
         <!-- /.row -->
         <!-- Service Tabs -->
         <div class="row">
-            <div class="col-lg-12">
-                <?php if ($useRest): ?>
-                    <div class="js-account" id="account_block"></div>
-                <?php else: ?>
-                    <?php if ($success = $this->pixie->session->flash('success')): ?>
-                        <div class="alert alert-success" role="alert"><?php echo $success; ?></div>
-                    <?php endif; ?>
-                    <ul id="myTab" class="nav nav-tabs" role="tablist">
-                        <li class="active"><a href="#my-orders" data-toggle="tab">My Latest Orders</a></li>
-                        <li><a href="#profile" data-toggle="tab">Profile</a></li>
-                    </ul>
-                    <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane fade in active latest-orders" id="my-orders">
-                            <?php include __DIR__.'/_order_list.php'; ?>
-                            <p class="text-right">
-                                <a href="/account/orders" id="order_link" class="btn btn-primary ladda-button" data-style="expand-right"><span class="ladda-label">Go to my orders</span></a>
-                            </p>
-                        </div>
-                        <div class="tab-pane fade profile-show" id="profile">
-                            <?php include __DIR__ . '/_profile_info.php'; ?>
-                        </div>
-                    </div>
+        <div class="col-lg-12">
+            <?php if ($useRest): ?>
+                <div class="js-account" id="account_block"></div>
+            <?php else: ?>
+                <?php if ($success = $this->pixie->session->flash('success')): ?>
+                    <div class="alert alert-success" role="alert"><?php echo $success; ?></div>
                 <?php endif; ?>
-            </div>
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#my-orders" data-toggle="tab">My Latest Orders</a></li>
+                    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active latest-orders" id="my-orders">
+                        <?php require_once __DIR__.'/_order_list.php'; ?> <!-- Changed from include to require_once -->
+                        <p class="text-right">
+                            <a href="/account/orders" id="order_link" class="btn btn-primary ladda-button" data-style="expand-right"><span class="ladda-label">Go to my orders</span></a>
+                        </p>
+                    </div>
+                    <div class="tab-pane fade profile-show" id="profile">
+                        <?php include_once __DIR__ . '/_profile_info.php'; ?> <!-- Changed from include to include_once -->
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
-        <!-- /.row -->
     </div>
-    <!-- /.container -->
+    <!-- /.row -->
+</div>
+<!-- /.container -->
 
 <?php if ($useRest): ?>
     <script type="text/javascript">

@@ -4,18 +4,18 @@
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
-                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" value="<?php $_($first_name); ?>">
+                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="0" value="<?php $_($first_name); ?>">
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
-                <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" value="<?php $_($last_name); ?>">
+                <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="0" value="<?php $_($last_name); ?>">
             </div>
         </div>
     </div>
 
     <div class="form-group">
-        <input type="text" name="user_phone" id="user_phone" class="form-control input-lg" placeholder="Phone" tabindex="3" value="<?php $_($user_phone); ?>">
+        <input type="text" name="user_phone" id="user_phone" class="form-control input-lg" placeholder="Phone" tabindex="0" value="<?php $_($user_phone); ?>">
     </div>
 
     <?php if (isset($photoUrl) && $photoUrl): ?>
@@ -26,16 +26,16 @@
     <?php endif; ?>
 
     <div class="form-group">
-        <input type="file" name="photo" id="photo" class="file-input btn btn-default btn-primary btn-lg" title="Select avatar image" tabindex="4" value="<?php $_($photo); ?>">
+        <input type="file" name="photo" id="photo" class="file-input btn btn-default btn-primary btn-lg" title="Select avatar image" tabindex="0" value="<?php $_($photo); ?>">
     </div>
 
     <hr class="colorgraph">
     <div class="row">
         <div class="col-xs-6 col-md-6">
-            <input type="submit" name="_submit_save" value="Save" class="btn btn-block btn-lg" tabindex="7">
+            <input type="submit" name="_submit_save" value="Save" class="btn btn-block btn-lg" tabindex="0">
         </div>
         <div class="col-xs-6 col-md-6">
-            <input type="submit" name="_submit_save_and_exit" value="Save and Exit" class="btn btn-primary btn-block btn-lg" tabindex="8">
+            <input type="submit" name="_submit_save_and_exit" value="Save and Exit" class="btn btn-primary btn-block btn-lg" tabindex="0">
         </div>
     </div>
 </form>

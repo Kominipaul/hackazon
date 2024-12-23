@@ -67,7 +67,11 @@ class DBSettingsStep extends AbstractStep
             // Try to connect
             $conn = new \PDO($dsn, $this->user, $this->password);
 
-            $stmt = $conn->query('USE `'.$this->db.'`');
+            if (!preg_match('/^[a-zA-Z0-9_]+$/', $this->db)) {
+                throw new Exception("Invalid database name.");
+            }
+            
+            $stmt = $conn->query('USE `' . $conn->real_escape_string($this->db) . '`');
 
             if (!$stmt || $stmt->errorCode() > 0) {
                 if ($this->createIfNotExists) {
