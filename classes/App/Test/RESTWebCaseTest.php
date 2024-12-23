@@ -11,7 +11,7 @@
 namespace App\Test;
 
 
-class RESTWebCaseTest extends WebTestCase
+abstract class RESTWebCaseTest extends WebTestCase
 {
     protected $token;
 
